@@ -84,13 +84,13 @@ let triforceNum = 0;
 let cursorX = 131;
 let cursorY = -152;
 let backgroundMusic = new Audio();
-backgroundMusic.src = "Lesson 23_sounds_Overworld.mp3";
+backgroundMusic.src = "turgut.mp3";
 backgroundMusic.loop = true;
 
 
-gameObjects = maps[1].gameobjects;
-gameMap = maps[1].map;
-let currentMap = 1;
+gameObjects = maps[119].gameobjects;
+gameMap = maps[119].map;
+let currentMap = 119;
 addMapGameObjects(gameMap, gameObjects);
 
 
@@ -132,7 +132,7 @@ function keyDownHandler(e){
         isAttacking = true;
 		currentAnimation = 0;
 		canAttackAgain = false;
-		canShootSword = true;
+		canShootSword = false;
 		playSound("LOZ_sword_slash.wav")
     }
 	//added for 22
