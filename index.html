@@ -537,7 +537,7 @@ function collision(x, y, map)
 	{
 		for(let j = 0; j < map[i].length; j++)
 			{
-				if(map[i][j] != 2 && map[i][j] != 28)
+				if(map[i][j] != 2 && map[i][j] != 28 && map[i][j] != 131 && map[i][j] != 18 && map[i][j] != 0)
 				{
 					if (x <= j*16 + 16 &&
 					   x + 12 >= j*16 &&
@@ -547,6 +547,7 @@ function collision(x, y, map)
 						return true;
 					}
 				}
+				
 			}
 	}
 	return false;	
