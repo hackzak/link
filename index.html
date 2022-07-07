@@ -2,13 +2,7 @@
 <head>
   <style>
    *{padding: 0; margin:0;}
-   canvas{
-	 background: #eee; 
-	 display: block; 
-	 margin: 0 auto;
-	 image-rendering: optimizeQuality;
-	 image-rendering: pixelated;
-	}
+   canvas{ background: #eee; display: block; margin: 0 auto;}
    </style>
 </head>
 <body>
@@ -88,9 +82,9 @@ backgroundMusic.src = "turgut.mp3";
 backgroundMusic.loop = true;
 
 
-gameObjects = maps[119].gameobjects;
-gameMap = maps[119].map;
-let currentMap = 119;
+gameObjects = maps[118].gameobjects;
+gameMap = maps[118].map;
+let currentMap = 118;
 addMapGameObjects(gameMap, gameObjects);
 
 
@@ -132,8 +126,8 @@ function keyDownHandler(e){
         isAttacking = true;
 		currentAnimation = 0;
 		canAttackAgain = false;
-		canShootSword = false;
-		playSound("LOZ_sword_slash.wav")
+		canShootSword = true;
+		playSound("./sounds/LOZ_sword_slash.wav")
     }
 	//added for 22
 	if(e.keyCode == 13 && !hasGameStarted)
@@ -289,7 +283,7 @@ function drawLink()
 				gO.y = adjustedY;
 				gO.isBomb = true;
 				bombs.push(gO);
-				playSound("LOZ_Bomb_Drop.wav");
+				playSound("./sounds/LOZ_Bomb_Drop.wav");
 			}
 		}
 		if(isAttacking && hasSword)
@@ -334,7 +328,7 @@ function drawLink()
 							proj.y = linkY + 8;
 							proj.ySpeed = 2;
 							proj.isSwordProjectile = true;
-							playSound("LOZ_sword_shoot.wav");
+							playSound("./sounds/LOZ_sword_shoot.wav");
 							projectiles.push(proj);
 							canShootSword = false;
 						}
@@ -355,7 +349,7 @@ function drawLink()
 							proj.ySpeed =  - 2;
 							canShootSword = false;
 							proj.isSwordProjectile = true;
-							playSound("LOZ_sword_shoot.wav");
+							playSound("./sounds/LOZ_sword_shoot.wav");
 							projectiles.push(proj);
 						}
 					}
@@ -375,7 +369,7 @@ function drawLink()
 							proj.xSpeed = -2;
 							canShootSword = false;
 							proj.isSwordProjectile = true;
-							playSound("OZ_sword_shoot.wav");
+							playSound("./sounds/LOZ_sword_shoot.wav");
 							projectiles.push(proj);
 						}
 					}
@@ -395,7 +389,7 @@ function drawLink()
 							proj.xSpeed = 2;
 							canShootSword = false;
 							proj.isSwordProjectile = true;
-							playSound("LOZ_sword_shoot.wav");
+							playSound("./sounds/LOZ_sword_shoot.wav");
 							projectiles.push(proj);
 						}
 					};
@@ -595,7 +589,7 @@ function gameObjectCollision(x, y, objects, isLink, isSword, isBomb, isCandle, i
 						{
 							rupeeAmount += objects[i].rupeeValue;
 							objects.splice(i,1);
-							playSound("LOZ_get_rupee.wav");
+							playSound("./sounds/LOZ_get_rupee.wav");
 							continue;
 						}
 
@@ -712,7 +706,7 @@ function gameObjectCollision(x, y, objects, isLink, isSword, isBomb, isCandle, i
 									swordEquipped = 1;
 									hasSword = true;
 									animationCounter = 0;
-									playSound("item.mp3");
+									playSound("./sounds/item.mp3");
 							}
 							
 							objects.splice(i,1);
@@ -731,11 +725,11 @@ function gameObjectCollision(x, y, objects, isLink, isSword, isBomb, isCandle, i
 							(lastButtonPressed == "left" &&  objects[i].xSpeed >0) ||
 							(lastButtonPressed == "right" &&  objects[i].xSpeed <0)))
 							{
-								playSound("LOZ_shield.wav");
+								playSound("./sounds/LOZ_shield.wav");
 								objects.splice(i,1);
 								return;
 							}
-							playSound("LOZ_link_hurt.wav");
+							playSound("./sounds/LOZ_link_hurt.wav");
 							if(objects[i].rockProjectile || objects[i].waterProjectile)
 							{
 								objects.splice(i,1);
@@ -768,7 +762,7 @@ function gameObjectCollision(x, y, objects, isLink, isSword, isBomb, isCandle, i
 							getBounceLoc(objects[i], false, direction);
 							if(objects[i].health <= 0)
 							{
-								playSound("LOZ_enemy_die.wav");
+								playSound("./sounds/LOZ_enemy_die.wav");
 								let count = 0;
 								for(let j = 0; j < objects.length; j++)
 								{
@@ -787,7 +781,7 @@ function gameObjectCollision(x, y, objects, isLink, isSword, isBomb, isCandle, i
 										gO.width = 8;
 										gO.height = 16;
 										gO.isKeyPickup = true;
-										playSound("LOZ_key_appear.wav");
+										playSound("./sounds/LOZ_key_appear.wav");
 										gameObjects.push(gO);
 									}
 									if(objects[i].groupItemNumber == 2)
@@ -799,7 +793,7 @@ function gameObjectCollision(x, y, objects, isLink, isSword, isBomb, isCandle, i
 										gO.height = 16;
 										gO.isPickUpItem = true;
 										gO.pickUpItemNum = 17;
-										playSound("LOZ_key_appear.wav");
+										playSound("./sounds/LOZ_key_appear.wav");
 										gameObjects.push(gO);
 									}
 								}
@@ -811,7 +805,7 @@ function gameObjectCollision(x, y, objects, isLink, isSword, isBomb, isCandle, i
 							}
 							else
 							{
-								playSound("LOZ_enemy_hit.wav");
+								playSound("./sounds/LOZ_enemy_hit.wav");
 							}
 						}
 						else if(objects[i].isBombable && objects[i].isDoor)
@@ -831,7 +825,7 @@ function gameObjectCollision(x, y, objects, isLink, isSword, isBomb, isCandle, i
 							gO2.isStairs = true;
 							gO2.isPortal = true;
 							gameObjects.push(gO2);
-							playSound("LOZ_secret.wav");
+							playSound("./sounds/LOZ_secret.wav");
 						}
 					}
 			}
@@ -865,11 +859,11 @@ function gameObjectCollision(x, y, objects, isLink, isSword, isBomb, isCandle, i
 									objects[i].health -= 1;
 									if(objects[i].health == 0)
 									{
-										playSound("LOZ_enemy_die.wav");
+										playSound("./sounds/LOZ_enemy_die.wav");
 									}
 									else
 									{
-										playSound("LOZ_enemy_hit.wav");
+										playSound("./sounds/LOZ_enemy_hit.wav");
 									}
 								}
 					}
@@ -890,11 +884,11 @@ function gameObjectCollision(x, y, objects, isLink, isSword, isBomb, isCandle, i
 									objects[i].health -= 1;
 									if(objects[i].health == 0)
 									{
-										playSound("LOZ_enemy_die.wav");
+										playSound("./sounds/LOZ_enemy_die.wav");
 									}
 									else
 									{
-										playSound("LOZ_enemy_hit.wav");
+										playSound("./sounds/LOZ_enemy_hit.wav");
 									}
 								}
 					}
@@ -915,11 +909,11 @@ function gameObjectCollision(x, y, objects, isLink, isSword, isBomb, isCandle, i
 									objects[i].health -= 1;
 									if(objects[i].health == 0)
 									{
-										playSound("LOZ_enemy_die.wav");
+										playSound("./sounds/LOZ_enemy_die.wav");
 									}
 									else
 									{
-										playSound("LOZ_enemy_hit.wav");
+										playSound("./sounds/LOZ_enemy_hit.wav");
 									}
 								}
 					}
@@ -940,11 +934,11 @@ function gameObjectCollision(x, y, objects, isLink, isSword, isBomb, isCandle, i
 									objects[i].health -= 1;
 									if(objects[i].health == 0)
 									{
-										playSound("LOZ_enemy_die.wav");
+										playSound("./sounds/LOZ_enemy_die.wav");
 									}
 									else
 									{
-										playSound("LOZ_enemy_hit.wav");
+										playSound("./sounds/LOZ_enemy_hit.wav");
 									}
 								}
 					}
@@ -1099,12 +1093,12 @@ function drawGameObjects()
 				if(gameObjects[i].line1Full.length != gameObjects[i].line1Current.length)
 				{
 					gameObjects[i].line1Current = gameObjects[i].line1Full.substring(0, gameObjects[i].line1Current.length + 1);
-					playSound("LOZ_text_slow.wav");
+					playSound("./sounds/LOZ_text_slow.wav");
 				}
 				else if(gameObjects[i].line2Full.length != gameObjects[i].line2Current.length)
 				{
 					gameObjects[i].line2Current = gameObjects[i].line2Full.substring(0, gameObjects[i].line2Current.length + 1);
-					playSound("LOZ_text_slow.wav");
+					playSound("./sounds/LOZ_text_slow.wav");
 				}
 			}
 			
@@ -2023,7 +2017,7 @@ function drawBombs()
 		}	
 		else if(bombs[i].frame == 1)
 		{
-			playSound("LOZ_bomb_blow.wav");
+			playSound("./sounds/LOZ_bomb_blow.wav");
 			ctx.drawImage(link2, 138, 185, 16, 16, bombs[i].x - 16, bombs[i].y,16, 16);
 			ctx.drawImage(link2, 138, 185, 16, 16, bombs[i].x + 8, bombs[i].y - 16, 16, 16);
 			ctx.drawImage(link2, 138, 185, 16, 16, bombs[i].x, bombs[i].y, 16, 16);
@@ -2372,13 +2366,13 @@ function drawProjectiles()
 						gameObjects.push(gO);
 						if(gameObjects[j].health == 0)
 						{
-							playSound("LOZ_enemy_die.wav");
+							playSound("./sounds/LOZ_enemy_die.wav");
 							gameObjects.splice(j, 1);
 							
 						}
 						else
 						{
-							playSound("LOZ_enemy_hit.wav");
+							playSound("./sounds/LOZ_enemy_hit.wav");
 						}
 						projectiles.splice(i, 1);
 						break;
@@ -2401,25 +2395,25 @@ function drawInventoryScreen(offset)
 	{
 		leftPressed = false;
 		cursorX -= 22;
-		playSound("LOZ_text.wav");
+		playSound("./sounds/LOZ_text.wav");
 	}
 	if(rightPressed && cursorX < 196)
 	{
 		rightPressed = false;
 		cursorX += 22;
-		playSound("LOZ_text.wav");
+		playSound("./sounds/LOZ_text.wav");
 	}
 	if(upPressed && cursorY + offset > 42)
 	{
 		upPressed = false;
 		cursorY -= 18;
-		playSound("LOZ_text.wav");
+		playSound("./sounds/LOZ_text.wav");
 	}
 	if(downPressed && cursorY + offset < 43)
 	{
 		downPressed = false;
 		cursorY += 18;
-		playSound("LOZ_text.wav");
+		playSound("./sounds/LOZ_text.wav");
 	}
 	ctx.drawImage(hud, 536, 137, 16, 16, cursorX, cursorY + offset, 16, 16);
 	
