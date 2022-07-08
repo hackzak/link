@@ -283,7 +283,8 @@ let map9 = [
 [ 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55]];
 let map9Objects = [];
 
-let hfdsjfhsdlk = map9[0][9][4];
+let donjon = map9[0][9][4];
+
 
 bundle = new MapBundle(map9, map9Objects);
 maps.push(bundle);
@@ -2610,7 +2611,7 @@ gO = new GameObject()
  gO.width = 16; 
  gO.height = 16; 
  gO.isEnemy = true; 
- gO.enemyType = 3; 
+ gO.enemyType = 1;
  gO.isAttacking = false; 
  gO.health = 1; 
  gO.direction = "up"; 
@@ -2625,7 +2626,7 @@ gO = new GameObject()
  gO.width = 16; 
  gO.height = 16; 
  gO.isEnemy = true; 
- gO.enemyType = 3; 
+ gO.enemyType = 1; 
  gO.isAttacking = false; 
  gO.health = 1; 
  gO.direction = "up"; 
