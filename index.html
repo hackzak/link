@@ -2,18 +2,44 @@
 <head>
   <style>
    *{padding: 0; margin:0;}
-   canvas{ background: #eee; display: block; margin: 0 auto;}
+   canvas{ background: #eee; display: block; margin: 0 auto;width: 38%;}
+	#Abutton{
+		margin: 12;
+		position: relative;
+		left: 380px;
+		top: -90px;
+		padding: 1%;
+		width: 5%; 
+	}
+	#b{
+		margin: 12;
+		position: relative;
+		left: 360px;
+		top: -55px;
+		padding: 1%;
+		width: 5%;	
+	}
+
    </style>
 </head>
 <body>
 <canvas id= "myCanvas" width="256" height="240"></canvas>
+
+<button id="Abutton">
+	A
+</button>
+<button id="b">
+	B
+</button>
 <script src="mapsFile.js"></script>
 <script type="text/javascript">
 let canvas = document.getElementById("myCanvas");
+let Abutton = document.getElementById("Abutton");
 let ctx = canvas.getContext("2d");
 document.addEventListener("keydown",keyDownHandler, false);
 document.addEventListener("keyup",keyUpHandler,false);
 document.body.style.zoom = "288%";
+
 
 
 let fps = 60;
@@ -29,6 +55,7 @@ let hud = new Image();
 hud.src = "pausescreen.png";
 let link2 = new Image();
 link2.src = "link2.png";
+
 
 let enemies = new Image();
 enemies.src = "enemies.png";
@@ -80,7 +107,7 @@ let cursorY = -152;
 let backgroundMusic = new Audio();
 backgroundMusic.src = "turgut.mp3";
 let backgroundMusic2 = new Audio();
-backgroundMusic2.src = "intro.png";
+backgroundMusic2.src = "intro.mp3";
 backgroundMusic.loop = true;
 
 
@@ -99,7 +126,7 @@ function playSound(source)
 
 
 function keyDownHandler(e){
-	if(e.keyCode == 66)
+	if(e.keyCode == "A32")
     {
 	   bPressed = true;
 	}
@@ -129,8 +156,9 @@ function keyDownHandler(e){
 		currentAnimation = 0;
 		canAttackAgain = false;
 		canShootSword = true;
-		playSound("./sounds/LOZ_sword_slash.wav")
+		playSound("LOZ_sword_slash.wav")
     }
+
 	//added for 22
 	if(e.keyCode == 13 && !hasGameStarted)
 	{
@@ -285,7 +313,7 @@ function drawLink()
 				gO.y = adjustedY;
 				gO.isBomb = true;
 				bombs.push(gO);
-				playSound("./sounds/LOZ_Bomb_Drop.wav");
+				playSound("LOZ_Bomb_Drop.wav");
 			}
 		}
 		if(isAttacking && hasSword)
