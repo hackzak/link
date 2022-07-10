@@ -3,21 +3,46 @@
   <style>
    *{padding: 0; margin:0;}
    canvas{ background: #eee; display: block; margin: 0 auto;width: 38%;}
-	.aButton{
+	#aButton{
 		margin: 12;
 		position: relative;
-		left: 380px;
+		left: 373px;
 		top: -90px;
 		padding: 1%;
 		width: 5%; 
 	}
-	.bButton{
+	#bButton{
 		margin: 12;
 		position: relative;
-		left: 360px;
+		left: 273px;
 		top: -55px;
 		padding: 1%;
 		width: 5%;	
+	}
+
+	#flècheHaut {
+
+		position: relative;
+		top: -100px;
+		left: 25px;
+	}
+	
+	#flècheDroit {
+		position: relative;
+		top: -75px;
+		left: 7px;
+	}
+	
+	#flècheBas {
+		position: relative;
+		top: -49px;
+		left: 4px;
+	}
+	
+	#flècheGauche {
+		position: relative;
+		top: -75px;
+		right: 63;
 	}
 
    </style>
@@ -27,6 +52,18 @@
 
 <button id="aButton">
 	A
+</button>
+<button id="flècheHaut">
+	|↑|
+</button>
+<button id="flècheBas">
+     |↓|
+</button>
+<button id="flècheDroit">
+	→
+</button>
+<button id="flècheGauche">
+	←
 </button>
 
 <button id="bButton">
@@ -184,8 +221,20 @@ function aBut() {
 		currentAnimation = 0;
 		canAttackAgain = false;
 		canShootSword = true;
-		playSound("LOZ_sword_slash.wav")
 	}
+
+let flècheDroit = document.getElementById("flècheDroit");
+flècheDroit.addEventListener("click", fg);
+function fg(){
+	rightPressed = true;
+	lastButtonPressed = "right";
+	animationSpeed = 1;
+	rightPressed = false;
+	
+}
+let flècheGauche = document
+let flècheBas = document
+let flècheHaut = document
 
 function keyUpHandler(e){
     if(e.keyCode == 37)
