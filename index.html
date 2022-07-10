@@ -3,7 +3,7 @@
   <style>
    *{padding: 0; margin:0;}
    canvas{ background: #eee; display: block; margin: 0 auto;width: 38%;}
-	#Abutton{
+	.aButton{
 		margin: 12;
 		position: relative;
 		left: 380px;
@@ -11,7 +11,7 @@
 		padding: 1%;
 		width: 5%; 
 	}
-	#b{
+	.bButton{
 		margin: 12;
 		position: relative;
 		left: 360px;
@@ -25,16 +25,17 @@
 <body>
 <canvas id= "myCanvas" width="256" height="240"></canvas>
 
-<button id="Abutton">
+<button id="aButton">
 	A
 </button>
-<button id="b">
+
+<button id="bButton">
 	B
 </button>
+
 <script src="mapsFile.js"></script>
 <script type="text/javascript">
 let canvas = document.getElementById("myCanvas");
-let Abutton = document.getElementById("Abutton");
 let ctx = canvas.getContext("2d");
 document.addEventListener("keydown",keyDownHandler, false);
 document.addEventListener("keyup",keyUpHandler,false);
@@ -126,7 +127,7 @@ function playSound(source)
 
 
 function keyDownHandler(e){
-	if(e.keyCode == "A32")
+	if(e.keyCode == 38)
     {
 	   bPressed = true;
 	}
@@ -159,6 +160,7 @@ function keyDownHandler(e){
 		playSound("LOZ_sword_slash.wav")
     }
 
+
 	//added for 22
 	if(e.keyCode == 13 && !hasGameStarted)
 	{
@@ -174,6 +176,16 @@ function keyDownHandler(e){
 		returnToGame = !returnToGame;
 	}
 }
+
+let aButton = document.getElementById("aButton");
+aButton.addEventListener("click", aBut);
+function aBut() {
+		isAttacking = true;
+		currentAnimation = 0;
+		canAttackAgain = false;
+		canShootSword = true;
+		playSound("LOZ_sword_slash.wav")
+	}
 
 function keyUpHandler(e){
     if(e.keyCode == 37)
