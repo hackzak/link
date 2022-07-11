@@ -4,12 +4,11 @@
    *{padding: 0; margin:0;}
    canvas{ background: #eee; display: block; margin: 0 auto;width: 38%;}
 	#aButton{
-		margin: 12;
+		margin: 15px;
 		position: relative;
 		left: 373px;
 		top: -90px;
-		padding: 1%;
-		width: 5%; 
+		padding: 5px;
 	}
 	#bButton{
 		margin: 12;
@@ -57,7 +56,7 @@
 	|↑|
 </button>
 <button id="flècheBas">
-     |↓|
+    |↓|
 </button>
 <button id="flècheDroit">
 	→
@@ -223,18 +222,41 @@ function aBut() {
 		canShootSword = true;
 	}
 
+
 let flècheDroit = document.getElementById("flècheDroit");
-flècheDroit.addEventListener("click", fg);
-function fg(){
-	rightPressed = true;
+flècheDroit.addEventListener("click", fd);
+function fd(){
+
+	rightPressed = true; 
 	lastButtonPressed = "right";
-	animationSpeed = 1;
-	rightPressed = false;
 	
 }
-let flècheGauche = document
-let flècheBas = document
-let flècheHaut = document
+let flècheGauche = document.getElementById("flècheGauche");
+flècheGauche.addEventListener("click", fG);
+	function fG(){
+
+		leftPressed = true;
+		lastButtonPressed = "left";
+
+	}
+
+let flècheBas = document.getElementById("flècheBas");
+flècheBas.addEventListener("click", fB);
+function fB() {
+
+	downPressed = true;
+	lastButtonPressed = "down";
+
+}
+let flècheHaut = document.getElementById("flècheHaut");
+flècheHaut.addEventListener("click", fH);
+function fH() {
+
+	upPressed = true;
+	lastButtonPressed = "up";
+
+}
+
 
 function keyUpHandler(e){
     if(e.keyCode == 37)
